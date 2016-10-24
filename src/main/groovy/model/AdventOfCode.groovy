@@ -14,6 +14,7 @@ class AdventOfCode {
       prevInstruction = current
       currentHouse = newCurrentHouse
     }
+    println "Visited houses: ${houses.size()}"
   }
 
   House getNewCurrentHouseForInstruction(String currentInstruction) {
