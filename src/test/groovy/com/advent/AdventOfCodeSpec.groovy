@@ -118,4 +118,42 @@ class AdventOfCodeSpec extends Specification {
       ">^^v^<>v<<<v<v^>>v^^^<"  | 15
   }
 
+//With Robo-Santa
+
+  def "Should visited 3 houses when instructions are ^v with Robo-Santa"() {
+    given:"The instructions"
+      String instructions = "^v"
+    when: "Process the instructions with robo-santa"
+      adventOfCode.processInstructionsWithRoboSanta(instructions)
+    then: "We expect 3 houses visited"
+      adventOfCode.houses.size() == 3
+  }
+
+  def "Should visited 3 houses when instructions are ^>v< with Robo-Santa"() {
+    given:"The instructions"
+      String instructions = "^>v<"
+    when: "Process the instructions with robo-santa"
+      adventOfCode.processInstructionsWithRoboSanta(instructions)
+    then: "We expect 3 houses visited"
+      adventOfCode.houses.size() == 3
+  }
+
+  def "Should visited 11 houses when instructions are ^v^v^v^v^v with Robo-Santa"() {
+    given:"The instructions"
+      String instructions = "^v^v^v^v^v"
+    when: "Process the instructions with robo-santa"
+      adventOfCode.processInstructionsWithRoboSanta(instructions)
+    then: "We expect 11 houses visited"
+      adventOfCode.houses.size() == 11
+  }
+
+  def "Should visited 17 houses when instructions are >^^v^<>v<<<v<v^>>v with Robo-Santa"() {
+    given:"The instructions"
+      String instructions = ">^^v^<>v<<<v<v^>>v"
+    when: "Process the instructions with robo-santa"
+      adventOfCode.processInstructionsWithRoboSanta(instructions)
+    then: "We expect 17 houses visited"
+      adventOfCode.houses.size() == 17
+  }
+
 }
