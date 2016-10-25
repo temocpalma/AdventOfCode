@@ -9,6 +9,8 @@ class Main {
     println "fileInstructions: ${fileInstructions}"
     AdventOfCode advOfCode = new AdventOfCode()
     advOfCode.processInstruction(fileInstructions)
+    advOfCode = new AdventOfCode()
+    advOfCode.processInstructionsWithRoboSanta(fileInstructions)
   }
 
 }
