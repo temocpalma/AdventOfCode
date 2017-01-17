@@ -7,7 +7,7 @@ class Main {
   }
 
   static void processDay3() {
-    String pathInstructions = "src/main/groovy/resources/instructions.txt"
+    String pathInstructions = "src/main/groovy/resources/instructions-d3.txt"
     File instr = new File(pathInstructions)
     String fileInstructions = instr.text
     println "fileInstructions: ${fileInstructions}"
