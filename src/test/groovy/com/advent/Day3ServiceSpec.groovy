@@ -3,15 +3,15 @@ package com.advent
 import spock.lang.Specification
 import spock.lang.Unroll
 
-class AdventOfCodeSpec extends Specification {
+class Day3ServiceSpec extends Specification {
 
-  AdventOfCode adventOfCode = new AdventOfCode()
+  Day3Service day3Service = new Day3Service()
 
   def "When instruction is > and previous is not opposite expect true"() {
     given:
       String instruction = ">"
     when:
-      Boolean result = adventOfCode.instructionIsNotOppositeToPrevious(instruction)
+      Boolean result = day3Service.instructionIsNotOppositeToPrevious(instruction)
     then:
       result == true
   }
@@ -20,9 +20,9 @@ class AdventOfCodeSpec extends Specification {
     given:
       String instruction = ">"
     and:
-      adventOfCode.prevInstruction = "<"
+      day3Service.prevInstruction = "<"
     when:
-      Boolean result = adventOfCode.instructionIsNotOppositeToPrevious(instruction)
+      Boolean result = day3Service.instructionIsNotOppositeToPrevious(instruction)
     then:
       result == false
   }
@@ -32,9 +32,9 @@ class AdventOfCodeSpec extends Specification {
     given:
       String currentInstruction = instr
     and:
-      adventOfCode = new AdventOfCode()
+      day3Service = new Day3Service()
     when:
-      int result = adventOfCode.getNewXLocation(currentInstruction)
+      int result = day3Service.getNewXLocation(currentInstruction)
     then:
       result == newX
     where:
@@ -48,9 +48,9 @@ class AdventOfCodeSpec extends Specification {
     given:
       String currentInstruction = instr
     and:
-      adventOfCode = new AdventOfCode()
+      day3Service = new Day3Service()
     when:
-      int result = adventOfCode.getNewYLocation(currentInstruction)
+      int result = day3Service.getNewYLocation(currentInstruction)
     then:
       result == newY
     where:
@@ -63,9 +63,9 @@ class AdventOfCodeSpec extends Specification {
     given:
       House house = new House(x:0, y:0)
     and:
-      adventOfCode.houses = [new House(x:0, y:1)]
+      day3Service.houses = [new House(x:0, y:1)]
     when:
-      def result = adventOfCode.newHouseIsNotYetVisited(house)
+      def result = day3Service.newHouseIsNotYetVisited(house)
     then:
       result == true
   }
@@ -74,9 +74,9 @@ class AdventOfCodeSpec extends Specification {
     given:
       House house = new House(x:0, y:0)
     and:
-      adventOfCode.houses = [new House(x:0, y:0)]
+      day3Service.houses = [new House(x:0, y:0)]
     when:
-      def result = adventOfCode.newHouseIsNotYetVisited(house)
+      def result = day3Service.newHouseIsNotYetVisited(house)
     then:
       result == false
 
@@ -85,7 +85,7 @@ class AdventOfCodeSpec extends Specification {
   def "When instruction is > and previous instruction is not opposite should delivers presents to 2 houses"() {
     given:"The > instruction"
       String instruction = ">"
-      AdventOfCode advCod = new AdventOfCode()
+      Day3Service advCod = new Day3Service()
     when:
       advCod.processInstruction(instruction)
     then:
@@ -96,9 +96,9 @@ class AdventOfCodeSpec extends Specification {
     given:"The > instruction"
       String instruction = "^>v<"
     when:
-      adventOfCode.processInstruction(instruction)
+      day3Service.processInstruction(instruction)
     then:
-      adventOfCode.houses.size == 4
+      day3Service.houses.size == 4
   }
 
   @Unroll
@@ -106,9 +106,9 @@ class AdventOfCodeSpec extends Specification {
     given:
       String instruction = instr
     when:
-      adventOfCode.processInstruction(instruction)
+      day3Service.processInstruction(instruction)
     then:
-      adventOfCode.houses.size == visited
+      day3Service.houses.size == visited
     where:
       instr | visited
       ">"   | 2
@@ -124,36 +124,36 @@ class AdventOfCodeSpec extends Specification {
     given:"The instructions"
       String instructions = "^v"
     when: "Process the instructions with robo-santa"
-      adventOfCode.processInstructionsWithRoboSanta(instructions)
+      day3Service.processInstructionsWithRoboSanta(instructions)
     then: "We expect 3 houses visited"
-      adventOfCode.houses.size() == 3
+      day3Service.houses.size() == 3
   }
 
   def "Should visited 3 houses when instructions are ^>v< with Robo-Santa"() {
     given:"The instructions"
       String instructions = "^>v<"
     when: "Process the instructions with robo-santa"
-      adventOfCode.processInstructionsWithRoboSanta(instructions)
+      day3Service.processInstructionsWithRoboSanta(instructions)
     then: "We expect 3 houses visited"
-      adventOfCode.houses.size() == 3
+      day3Service.houses.size() == 3
   }
 
   def "Should visited 11 houses when instructions are ^v^v^v^v^v with Robo-Santa"() {
     given:"The instructions"
       String instructions = "^v^v^v^v^v"
     when: "Process the instructions with robo-santa"
-      adventOfCode.processInstructionsWithRoboSanta(instructions)
+      day3Service.processInstructionsWithRoboSanta(instructions)
     then: "We expect 11 houses visited"
-      adventOfCode.houses.size() == 11
+      day3Service.houses.size() == 11
   }
 
   def "Should visited 17 houses when instructions are >^^v^<>v<<<v<v^>>v with Robo-Santa"() {
     given:"The instructions"
       String instructions = ">^^v^<>v<<<v<v^>>v"
     when: "Process the instructions with robo-santa"
-      adventOfCode.processInstructionsWithRoboSanta(instructions)
+      day3Service.processInstructionsWithRoboSanta(instructions)
     then: "We expect 17 houses visited"
-      adventOfCode.houses.size() == 17
+      day3Service.houses.size() == 17
   }
 
 }

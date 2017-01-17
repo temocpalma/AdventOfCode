@@ -1,6 +1,6 @@
 package com.advent
 
-class AdventOfCode {
+class Day3Service {
   House currentHouse = new House(x:0,y:0)
   List houses = [currentHouse]
   String prevInstruction = ""
