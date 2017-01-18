@@ -15,8 +15,10 @@ class Main {
     String fileInstructions = instr.text
     println "fileInstructions: ${fileInstructions}"
     Day1Service day1Service = new Day1Service()
-    Long floor = day1Service.executeInstructions(fileInstructions)
+    Long floor = day1Service.lastFloor(fileInstructions)
     println "Current Floor: ${floor}"
+    Long position = day1Service.positionFirstTimeInBasement(fileInstructions)
+    println position ? "Position when first time in basement: ${position}" : "No llega nunca al cimiento"
   }
 
   static void processDay3() {

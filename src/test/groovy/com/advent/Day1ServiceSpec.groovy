@@ -10,7 +10,7 @@ class Day1ServiceSpec extends Specification {
   @Unroll
   void "Should to be in floor #floor when instructions are #instructions"() {
     when:"Process the instructions"
-      def currentFloor = day1Service.executeInstructions(instructions)
+      def currentFloor = day1Service.lastFloor(instructions)
     then:"Expect floor"
       currentFloor == floor
     where:
@@ -24,6 +24,19 @@ class Day1ServiceSpec extends Specification {
     "))("           ||      -1
     ")))"           ||      -3
     ")())())"       ||      -3
+  }
+
+  @Unroll
+  void "Should get position #position for first time in basement when instructions are #instructions"() {
+    when:"Process the instructions"
+      def result = day1Service.positionFirstTimeInBasement(instructions)
+    then:"Expect floor"
+      result == position
+    where:
+    instructions    ||    position
+    ")"             ||      1
+    "()())()())"    ||      5
+    "()()()()"      ||      0
   }
 
 }
